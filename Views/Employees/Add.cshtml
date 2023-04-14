@@ -1,0 +1,53 @@
+﻿@model NET6CRUD.Models.AddEmployeeViewModel
+
+<h1>Add Employee</h1>
+<form method="POST" action="Add" class="mt-5" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Name">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Email Address</label>
+        <input type="email" class="form-control" asp-for="Email">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Salary</label>
+        <input type="number" class="form-control" asp-for="Salary">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Date Of Birth</label>
+        <input type="date" class="form-control" asp-for="DateOfBirth">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" asp-for="IsActive">
+        <label for="" class="form-check-label">Is Active Employee</label>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-check-label">Gender</label>
+        <input type="radio" name="gender" asp-for="Gender" value="@((int)NET6CRUD.Data.Enums.Gender.Male)"> Male
+        <input type="radio" name="gender" asp-for="Gender" value="@((int)NET6CRUD.Data.Enums.Gender.Female)"> Female
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-check-label">Image</label>
+        <input type="file" class="form-control" asp-for="Image" accept="image/*" id="formFile" onchange="preview()">
+        <img id="frame" class="img-fluid mt-2" height="200px" width="200px" src="~/images/user.png" />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Department</label>
+        <select class="form-select" asp-for="DepartmentID" asp-items="Model.DepartmentsSelectList">
+            <option value="-1">-- Please Select Department --</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+    function preview() {
+        frame.src = URL.createObjectURL(event.target.files[0]);
+    }
+    function clearImage() {
+        document.getElementById('formFile').value = null;
+        frame.src = "";
+    }
+</script>

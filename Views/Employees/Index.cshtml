@@ -1,0 +1,36 @@
+﻿@model List<NET6CRUD.Models.Domain.Employee>
+
+
+<h1>Employees List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>Date Of Birth</th>
+            <th>Is Active</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Email</td>
+                <td>@emp.Salary</td>
+                <td>@emp.DateOfBirth.ToString("dd-MM-yyyy")</td>
+                <td>@(emp.IsActive? "Yes":"No")</td>
+                <td>@(emp.Gender == (int)NET6CRUD.Data.Enums.Gender.Male ? "Male":"Female")</td>
+                <td>@emp.Department.DepartmentName</td>
+                <td><a href="Employees/View/@emp.Id">View</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

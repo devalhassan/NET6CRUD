@@ -1,0 +1,15 @@
+﻿@model NET6CRUD.Models.AddProductViewModel
+
+<h1>Add Product Attatchments</h1>
+<form method="POST" action="Add" class="mt-5" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="" class="form-label">Product Name</label>
+        <input type="text" class="form-control" asp-for="ProductName">
+    </div>
+    <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Attatchments</label>
+        <input class="form-control" asp-for="Attatchments" type="file" id="formFileMultiple" multiple>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
